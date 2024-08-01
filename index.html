@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .chat-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-box {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            height: 300px;
+            overflow-y: auto;
+        }
+        
+        .chat-box div {
+            margin-bottom: 10px;
+        }
+        
+        #message-input {
+            padding: 10px;
+            border: none;
+            border-top: 1px solid #ccc;
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+        }
+        
+        #send-button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #send-button:hover {
+            background-color: #0056b3;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <div class="chat-container">
+        <div id="chat-box" class="chat-box"></div>
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button id="send-button">Send</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const ws = new WebSocket("ws://localhost:8080/ws");
+        const chatBox = document.getElementById("chat-box");
+        const messageInput = document.getElementById("message-input");
+        const sendButton = document.getElementById("send-button");
+    
+        ws.onopen = () => {
+            console.log("Connected to WebSocket server");
+        };
+    
+        ws.onmessage = (event) => {
+            const message = document.createElement("div");
+            message.textContent = `Server: ${event.data}`;
+            chatBox.appendChild(message);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        };
+    
+        ws.onclose = () => {
+            console.log("Disconnected from WebSocket server");
+        };
+    
+        sendButton.addEventListener("click", () => {
+            const message = messageInput.value;
+            if (message) {
+                ws.send(message);
+                const messageElement = document.createElement("div");
+                messageElement.textContent = `You: ${message}`;
+                chatBox.appendChild(messageElement);
+                chatBox.scrollTop = chatBox.scrollHeight;
+                messageInput.value = "";
+            }
+        });
+    
+        messageInput.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                sendButton.click();
+            }
+        });
+    });
+    
+</script>
