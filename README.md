@@ -1,4 +1,4 @@
-# Proje Adı
+# Web Socket Task
 
 Bu proje, WebSocket ve HTTP sunucusu ile bağlantı yönetimi yapan bir Go uygulamasıdır. Proje, WebSocket bağlantılarını yönetir ve HTTP sunucusu aracılığıyla bu bağlantılara hizmet verir.
 
@@ -8,7 +8,7 @@ Bu belgede, projeyi nasıl çalıştıracağınız, yapılandıracağınız ve k
 
 ### Gereksinimler
 
-- Go 1.XX veya daha yenisi (Go'nun en son sürümünü kullanmanız önerilir)
+- (Go'nun en son sürümünü kullanmanız önerilir)
 - `git` (proje kodunu çekmek için)
 
 ### Kurulum
@@ -18,9 +18,10 @@ Bu belgede, projeyi nasıl çalıştıracağınız, yapılandıracağınız ve k
    ```sh
    git clone https://github.com/Burak-Atas/web-socket-task.git
    ```
-   
+
    ```sh
    go run cmd/main.go
-   ````
+   ```
 2. **index.html dosyasını çalıştırın**
+
    
