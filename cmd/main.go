@@ -24,7 +24,7 @@ func main() {
 	http.HandleFunc("/ws", srv.HandleConnections)
 
 	server := http.Server{
-		Addr:         ":8080",
+		Addr:         ":" + *addr,
 		IdleTimeout:  120 * time.Second,
 		ReadTimeout:  1 * time.Second,
 		WriteTimeout: 1 * time.Second,
