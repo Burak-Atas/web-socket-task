@@ -191,6 +191,7 @@ func (s *Server) Publish(message Message) {
 				err := s.SendWithWait(c.Conn, string(message.Content))
 				if err != nil {
 					s.l.Printf("Failed to send message to client %s: %v", c.ID, err)
+					c.Error(err)
 				}
 			}(conn)
 		}
