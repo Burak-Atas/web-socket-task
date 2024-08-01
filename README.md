@@ -17,7 +17,10 @@ Bu belgede, projeyi nasıl çalıştıracağınız, yapılandıracağınız ve k
 
    ```sh
    git clone https://github.com/Burak-Atas/web-socket-task.git
+   ```
    
    ```sh
    go run cmd/main.go
+   ````
+2. **index.html dosyasını çalıştırın**
    
