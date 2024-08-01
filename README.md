@@ -16,4 +16,8 @@ Bu belgede, projeyi nasıl çalıştıracağınız, yapılandıracağınız ve k
 1. **Projeyi Klonlayın:**
 
    ```sh
-   git clone https://github.com/username/proje-adi.git
+   git clone https://github.com/Burak-Atas/web-socket-task.git
+   
+   ```sh
+   go run cmd/main.go
+   
