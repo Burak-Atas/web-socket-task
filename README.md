@@ -25,5 +25,11 @@ Bu belgede, projeyi nasıl çalıştıracağınız, yapılandıracağınız ve k
    
    ```
 2. **index.html dosyasını çalıştırın**
-
    
+### DOCKER İLE BİRLİKTE ÇALIŞTIRMA
+ ```sh
+      docker-compose build
+   ```
+    ```sh
+      docker-compose up
+   ```
