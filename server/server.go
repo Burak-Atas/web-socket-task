@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strconv"
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
 )
 
@@ -90,7 +90,7 @@ func (s *Server) HandleConnections(w http.ResponseWriter, r *http.Request) {
 func (s *Server) nextID() string {
 	s.Mutex.Lock()
 	defer s.Mutex.Unlock()
-	return strconv.Itoa(len(s.Clients))
+	return uuid.New().String()
 }
 
 func (s *Server) JoinRegister(client *Client) {
