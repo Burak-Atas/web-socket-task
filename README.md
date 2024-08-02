@@ -22,14 +22,13 @@ Bu belgede, projeyi nasıl çalıştıracağınız, yapılandıracağınız ve k
    ```sh
    go run cmd/main.go
    go run cmd/main.go -addr ${port}
-   
    ```
 2. **index.html dosyasını çalıştırın**
    
 ### DOCKER İLE BİRLİKTE ÇALIŞTIRMA
- ```sh
+   ```sh
       docker-compose build
    ```
-    ```sh
+   ```sh
       docker-compose up
    ```
