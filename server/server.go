@@ -174,13 +174,13 @@ func (s *Server) Read(client *Client, done chan<- struct{}) {
 		s.Broadcast <- mess
 	}
 }
+
+// broadcast message to everyone
 func (s *Server) Publish(message Message) {
-	// Eğer istemci var ise mesajı diğer istemcilere gönder
 	if _, exist := s.Clients[message.client.ID]; !exist {
 		return
 	}
 
-	// Diğer istemcilere mesaj gönderme
 	var wg sync.WaitGroup
 	for _, conn := range s.Clients {
 		if conn.ID != message.client.ID {
