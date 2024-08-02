@@ -1,7 +1,6 @@
 package server
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"sync"
@@ -170,7 +169,7 @@ func (s *Server) Read(client *Client, done chan<- struct{}) {
 			done:    make(chan struct{}),
 		}
 
-		fmt.Println(mess.Content)
+		s.l.Println(mess.Content)
 
 		s.Broadcast <- mess
 	}
